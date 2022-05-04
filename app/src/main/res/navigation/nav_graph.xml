@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.takeorder.HomeFragment"
+        android:label=""
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.example.takeorder.OrderFragment"
+        android:label=""
+        tools:layout="@layout/fragment_order">
+    </fragment>
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.example.takeorder.OrderHistoryFragment"
+        android:label=""
+        tools:layout="@layout/fragment_order_history">
+    </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.takeorder.AdminFragment"
+        android:label=""
+        tools:layout="@layout/fragment_admin">
+        <action
+            android:id="@+id/action_adminFragment_to_adminStaffFragment"
+            app:destination="@id/adminStaffFragment"
+            app:popUpTo="@id/adminFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_adminMenuFragment"
+            app:destination="@id/adminMenuFragment"
+            app:popUpTo="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminStaffFragment"
+        android:name="com.example.takeorder.admin.AdminStaffFragment"
+        android:label=""
+        tools:layout="@layout/fragment_admin_staff">
+    </fragment>
+    <fragment
+        android:id="@+id/adminMenuFragment"
+        android:name="com.example.takeorder.admin.AdminMenuFragment"
+        android:label="fragment_admin_menu"
+        tools:layout="@layout/fragment_admin_menu" />
+
+</navigation>

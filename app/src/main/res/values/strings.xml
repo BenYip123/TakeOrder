@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TakeOrder</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="homeText">What would you like to do?</string>
+
+    <string-array name="edit_staff_array">
+        <item>regular</item>
+        <item>admin</item>
+    </string-array>
+</resources>
