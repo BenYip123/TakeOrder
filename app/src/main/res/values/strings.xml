@@ -8,4 +8,10 @@
         <item>regular</item>
         <item>admin</item>
     </string-array>
+
+    <string-array name="edit_menu_array">
+        <item>food</item>
+        <item>drink</item>
+        <item>miscellaneous</item>
+    </string-array>
 </resources>

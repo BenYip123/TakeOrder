@@ -23,7 +23,7 @@ class RealmDB: Application() {
         val staff = RealmStaff()
         staff.insert("bob", "password", "regular")
         val menuItems = RealmMenuItems()
-        menuItems.insert("Fish and Chips", 500, "Fresh battered cod with chips")
+        menuItems.insert("Fish and Chips", 500, "Fresh battered cod with chips", "food")
         val order = RealmOrders()
         val currentDate = Date.from(Instant.now())
         println(currentDate)

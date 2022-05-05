@@ -44,7 +44,6 @@ open class RealmStaff (
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction{
             val staff = RealmStaff(id, name, password, role)
-            RealmStaff()
             realm.insertOrUpdate(staff)
         }
     }

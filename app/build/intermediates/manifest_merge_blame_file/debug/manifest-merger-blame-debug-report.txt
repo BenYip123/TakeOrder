@@ -1,0 +1,111 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.takeorder"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->[io.realm:realm-android-library-object-server:10.6.0] C:\Users\beny5\.gradle\caches\transforms-3\3e146d3e4658ee82ac58074d3da84022\transformed\realm-android-library-object-server-10.6.0\AndroidManifest.xml:10:5-79
+11-->[io.realm:realm-android-library-object-server:10.6.0] C:\Users\beny5\.gradle\caches\transforms-3\3e146d3e4658ee82ac58074d3da84022\transformed\realm-android-library-object-server-10.6.0\AndroidManifest.xml:10:22-76
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->[io.realm:realm-android-library-object-server:10.6.0] C:\Users\beny5\.gradle\caches\transforms-3\3e146d3e4658ee82ac58074d3da84022\transformed\realm-android-library-object-server-10.6.0\AndroidManifest.xml:11:5-67
+12-->[io.realm:realm-android-library-object-server:10.6.0] C:\Users\beny5\.gradle\caches\transforms-3\3e146d3e4658ee82ac58074d3da84022\transformed\realm-android-library-object-server-10.6.0\AndroidManifest.xml:11:22-64
+13
+14    <application
+14-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:5:5-31:19
+15        android:name="com.example.takeorder.RealmDB"
+15-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:6:9-32
+16        android:allowBackup="true"
+16-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:7:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.7.0] C:\Users\beny5\.gradle\caches\transforms-3\2e86907c8a67b977bfd9310c84c92517\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+18        android:debuggable="true"
+19        android:icon="@mipmap/ic_launcher"
+19-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:8:9-43
+20        android:label="@string/app_name"
+20-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:9:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:10:9-54
+22        android:supportsRtl="true"
+22-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:11:9-35
+23        android:testOnly="true"
+24        android:theme="@style/Theme.TakeOrder" >
+24-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:12:9-47
+25        <activity
+25-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:13:9-21:20
+26            android:name="com.example.takeorder.LoginActivity"
+26-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:14:13-42
+27            android:exported="true" >
+27-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:15:13-36
+28            <intent-filter>
+28-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:16:13-20:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:17:17-69
+29-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:17:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:19:17-77
+31-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:19:27-74
+32            </intent-filter>
+33        </activity>
+34        <activity
+34-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:22:9-30:20
+35            android:name="com.example.takeorder.MainActivity"
+35-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:23:13-41
+36            android:exported="true" >
+36-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:24:13-36
+37            <intent-filter>
+37-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:16:13-20:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:17:17-69
+38-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:17:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:19:17-77
+40-->C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:19:27-74
+41            </intent-filter>
+42        </activity>
+43
+44        <uses-library
+44-->[androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+45            android:name="androidx.window.extensions"
+45-->[androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+46            android:required="false" />
+46-->[androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+47        <uses-library
+47-->[androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+48            android:name="androidx.window.sidecar"
+48-->[androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+49            android:required="false" />
+49-->[androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+50
+51        <provider
+51-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+52            android:name="androidx.startup.InitializationProvider"
+52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+53            android:authorities="com.example.takeorder.androidx-startup"
+53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+54            android:exported="false" >
+54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+55            <meta-data
+55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+56-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+57                android:value="androidx.startup" />
+57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+58            <meta-data
+58-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\beny5\.gradle\caches\transforms-3\06b735cfd9442c0905a45d349be9a384\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+59-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\beny5\.gradle\caches\transforms-3\06b735cfd9442c0905a45d349be9a384\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+60                android:value="androidx.startup" />
+60-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\beny5\.gradle\caches\transforms-3\06b735cfd9442c0905a45d349be9a384\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+61        </provider>
+62    </application>
+63
+64</manifest>

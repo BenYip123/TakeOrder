@@ -3,7 +3,9 @@ package com.example.takeorder.adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.text.Editable
 import android.text.SpannableStringBuilder
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +14,16 @@ import android.widget.*
 import androidx.core.text.bold
 import androidx.recyclerview.widget.RecyclerView
 import com.example.takeorder.R
+import com.example.takeorder.realm.RealmMenuItems
 import com.example.takeorder.realm.RealmOrders
 import com.example.takeorder.realm.RealmStaff
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
+import org.w3c.dom.Text
 import java.math.BigDecimal
 import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 /*
  * OrderRecyclerViewAdapter: extends the Realm-provided
@@ -63,8 +69,9 @@ internal class OrderRecyclerViewAdapter(data: OrderedRealmCollection<RealmOrders
         holder.itemView.setOnClickListener {
             notifyItemChanged(position)
         }
-        // hide textView4 and buttons as they are not needed for this view
+        // hide textView4,5 and buttons as they are not needed for this view
         holder.textView4.visibility = View.GONE
+        holder.textView5.visibility = View.GONE
         holder.editButton.visibility = View.GONE
         holder.deleteButton.visibility = View.GONE
     }
@@ -78,6 +85,7 @@ internal class OrderRecyclerViewAdapter(data: OrderedRealmCollection<RealmOrders
         var price: TextView = itemView.findViewById(R.id.textView2)
         var date: TextView = itemView.findViewById(R.id.textView3)
         var textView4: TextView = itemView.findViewById(R.id.textView4)
+        var textView5: TextView = itemView.findViewById(R.id.textView5)
         var editButton: ImageView = itemView.findViewById(R.id.editButton)
         var deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
     }
@@ -111,11 +119,12 @@ internal class StaffRecyclerViewAdapter(private val context: Context, data: Orde
         // build strings to be displayed inside each recyclerview
         holder.staffId.text =
             SpannableStringBuilder().bold { append("Staff ID ") }.append(obj.id.toString())
-        // prices stored in db without decimal, so we divide by 100 and format it to show to 2 decimal places
         holder.username.text = SpannableStringBuilder().bold { append("Username ") }.append(obj.name)
         holder.role.text =
             SpannableStringBuilder().bold { append("Role ") }.append(obj.role)
         holder.password.text = SpannableStringBuilder().bold { append("Password ")}.append(obj.password)
+        //hide textView5
+        holder.textView5.visibility = View.GONE
         // if the primary key is 0 hide the edit button, as this is the first default admin account created
         if(obj.id.toInt() == 0){
             holder.editButton.visibility = View.GONE
@@ -156,6 +165,7 @@ internal class StaffRecyclerViewAdapter(private val context: Context, data: Orde
         var username: TextView = itemView.findViewById(R.id.textView2)
         var password: TextView = itemView.findViewById(R.id.textView3)
         var role: TextView = itemView.findViewById(R.id.textView4)
+        var textView5: TextView = itemView.findViewById(R.id.textView5)
         var editButton: ImageView = itemView.findViewById(R.id.editButton)
         var deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
     }
@@ -184,7 +194,6 @@ internal class StaffRecyclerViewAdapter(private val context: Context, data: Orde
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinner.adapter = adapter
                 val spinnerPosition = adapter.getPosition(role)
-                println(spinnerPosition)
                 spinner.setSelection(spinnerPosition)
             }
         val builder = AlertDialog.Builder(context)
@@ -192,6 +201,170 @@ internal class StaffRecyclerViewAdapter(private val context: Context, data: Orde
             .setPositiveButton("Save") { _: DialogInterface, _: Int ->
                 val realm = RealmStaff()
                 realm.update(id, usernameField.text.toString(), passwordField.text.toString(), spinner.selectedItem.toString())
+            }
+            .setNegativeButton("Cancel") { dialog: DialogInterface, _: Int ->
+                dialog.cancel()
+            }
+        val alert = builder.create()
+        alert.show()
+    }
+}
+internal class MenuRecyclerViewAdapter(private val context: Context, data: OrderedRealmCollection<RealmMenuItems?>?) :
+    RealmRecyclerViewAdapter<RealmMenuItems?,
+            MenuRecyclerViewAdapter.MenuViewHolder?>(data, true) {
+    var TAG = "REALM_RECYCLER_ADAPTER"
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MenuViewHolder {
+        Log.i(TAG, "Creating view holder")
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recyclerview_row, parent, false)
+        return MenuViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
+        //val obj = getItem(position)
+        val obj: RealmMenuItems? = data!![position]
+        Log.i(TAG, "Binding view holder: ${obj!!.id}")
+        // build strings to be displayed inside each recyclerview
+        holder.itemId.text =
+            SpannableStringBuilder().bold { append("Menu Item ID ") }.append(obj.id.toString())
+        holder.name.text =
+            SpannableStringBuilder().bold { append("Item Name ") }.append(obj.name)
+        // prices stored in db without decimal, so we divide by 100 and format it to show to 2 decimal places
+        holder.price.text = SpannableStringBuilder().bold { append("Price ") }.append("£")
+            .append(
+                DecimalFormat("#,##0.00")
+                    .format(
+                        obj.price.toBigDecimal().divide(
+                            BigDecimal(100)
+                        )
+                    ).toString()
+            )
+        holder.description.text =
+            SpannableStringBuilder().bold { append("Description ") }.append(obj.description)
+        holder.category.text = SpannableStringBuilder().bold { append("Category ")}.append(obj.category)
+        holder.editButton.setOnClickListener {
+            editMenuDialog(
+                obj.id,
+                obj.name,
+                obj.price,
+                obj.description,
+                obj.category
+            )
+        }
+        holder.deleteButton.setOnClickListener {
+            // ask if the user is sure they want to delete this item
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage("Are you sure you want to delete this item?")
+                .setPositiveButton(
+                    "Yes"
+                ) { _: DialogInterface, _: Int ->
+                    val realm = RealmMenuItems()
+                    realm.delete(obj.id)
+                }
+                .setNegativeButton(
+                    "No"
+                ) { dialog: DialogInterface, _: Int ->
+                    dialog.cancel()
+                }
+            val alert = builder.create()
+            alert.show()
+        }
+    }
+
+    override fun getItemId(index: Int): Long {
+        return getItem(index)!!.id
+    }
+
+    internal inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var itemId: TextView = itemView.findViewById(R.id.textView1)
+        var name: TextView = itemView.findViewById(R.id.textView2)
+        var price: TextView = itemView.findViewById(R.id.textView3)
+        var description: TextView = itemView.findViewById(R.id.textView4)
+        var category: TextView = itemView.findViewById(R.id.textView5)
+        var editButton: ImageView = itemView.findViewById(R.id.editButton)
+        var deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
+    }
+
+    init {
+        Log.i(
+            TAG,
+            "Created RealmRecyclerViewAdapter for ${getData()!!.size} menu."
+        )
+    }
+
+    private fun editMenuDialog(id: Long, name: String, price: Long, description: String, category: String) {
+        val inflater = LayoutInflater.from(context)
+        val subView = inflater.inflate(R.layout.edit_menu, null)
+        val nameField = subView.findViewById<EditText>(R.id.name)
+        val priceField = subView.findViewById<EditText>(R.id.price)
+        val descriptionField = subView.findViewById<EditText>(R.id.description)
+
+        // fill textfields with data
+        nameField.setText(name)
+        val parsed = price.toDouble()
+        val formatted = NumberFormat.getCurrencyInstance(Locale.UK).format((parsed/100))
+        priceField.setText(formatted)
+        descriptionField.setText(description)
+
+        // Initialise Long variable so that the price stays the same if the user does not change the price text field
+        var cleanStringLong: Long = price
+
+        // format the price field so that numbers are forced to be with 2 decimal places
+        priceField.addTextChangedListener(object: TextWatcher {
+            private var currentText = ""
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(s.toString() != currentText){
+                    priceField.removeTextChangedListener(this)
+
+                    val cleanString = s.replace("\\D".toRegex(), "")
+
+                    cleanStringLong = cleanString.toLong()
+
+                    val parsed = cleanString.toDouble()
+                    val formatted = NumberFormat.getCurrencyInstance(Locale.UK).format((parsed/100))
+                    currentText = formatted
+                    priceField.setText(formatted)
+                    priceField.setSelection(formatted.length)
+                    priceField.addTextChangedListener(this)
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
+
+        // implementation of spinner drop-down menu from documentation
+        // https://developer.android.com/guide/topics/ui/controls/spinner#kotlin
+        val spinner: Spinner = subView.findViewById(R.id.category_spinner)
+        ArrayAdapter.createFromResource(
+            context,
+            R.array.edit_menu_array,
+            android.R.layout.simple_spinner_item
+        )
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+                val spinnerPosition = adapter.getPosition(category)
+                spinner.setSelection(spinnerPosition)
+            }
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Edit menu item").setView(subView)
+            .setPositiveButton("Save") { _: DialogInterface, _: Int ->
+                val realm = RealmMenuItems()
+                realm.update(
+                    id,
+                    nameField.text.toString(),
+                    cleanStringLong,
+                    descriptionField.text.toString(),
+                    spinner.selectedItem.toString()
+                )
             }
             .setNegativeButton("Cancel") { dialog: DialogInterface, _: Int ->
                 dialog.cancel()

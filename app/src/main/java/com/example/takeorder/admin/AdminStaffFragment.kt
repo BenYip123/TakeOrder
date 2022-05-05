@@ -18,6 +18,7 @@ import com.example.takeorder.adapter.OrderRecyclerViewAdapter
 import com.example.takeorder.adapter.StaffRecyclerViewAdapter
 import com.example.takeorder.realm.RealmOrders
 import com.example.takeorder.realm.RealmStaff
+import io.realm.Case
 import io.realm.Realm
 import io.realm.Sort
 
@@ -50,13 +51,25 @@ class AdminStaffFragment : Fragment(R.layout.fragment_admin_staff) {
             override fun onQueryTextSubmit(query: String): Boolean {
                 // convert query into an int or null(if not a valid int) so it can be compared with the id column in database
                 val intQuery: Int? = query.toIntOrNull()
-                adapter.updateData(realm.where(RealmStaff::class.java).equalTo("id", intQuery).or().contains("name", query).findAll())
+                adapter.updateData(realm.where(RealmStaff::class.java)
+                    .equalTo("id", intQuery)
+                    .or()
+                    .contains("name", query, Case.INSENSITIVE)
+                    .or()
+                    .contains("role", query, Case.INSENSITIVE)
+                    .findAll())
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
                 val intNewText: Int? = newText.toIntOrNull()
-                adapter.updateData(realm.where(RealmStaff::class.java).equalTo("id", intNewText).or().contains("name", newText).findAll())
+                adapter.updateData(realm.where(RealmStaff::class.java)
+                    .equalTo("id", intNewText)
+                    .or()
+                    .contains("name", newText, Case.INSENSITIVE)
+                    .or()
+                    .contains("role", newText, Case.INSENSITIVE)
+                    .findAll())
                 return false
             }
         })

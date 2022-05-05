@@ -18,12 +18,13 @@ open class RealmMenuItems (
 
     var price: Long = 0,
     var description: String = "",
+    var category: String = "",
 
     //Link back to RealmMenuItemsOrders
     @LinkingObjects("menuItem")
     val itemOrder: RealmResults<RealmMenuItemsOrders>? = null
 ) : RealmObject() {
-    fun insert(name: String, price: Long, description: String) {
+    fun insert(name: String, price: Long, description: String, category: String) {
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction {
             val maxID = realm.where(RealmMenuItems::class.java).max("id")
@@ -32,8 +33,23 @@ open class RealmMenuItems (
             } else {
                 maxID.toLong() + 1
             }
-            val menuItem = RealmMenuItems(newID, name, price, description)
+            val menuItem = RealmMenuItems(newID, name, price, description, category)
             realm.copyToRealmOrUpdate(menuItem)
+        }
+    }
+    fun update(id: Long, name: String, price: Long, description: String, category: String){
+        val realm = Realm.getDefaultInstance()
+        realm.executeTransaction{
+            val menuItem = RealmMenuItems(id, name, price, description, category)
+            realm.insertOrUpdate(menuItem)
+        }
+    }
+    fun delete(id: Long){
+        val realm = Realm.getDefaultInstance()
+        realm.executeTransaction{
+            // search by primary key then delete
+            val result = realm.where(RealmMenuItems::class.java).equalTo("id", id).findFirst()
+            result?.deleteFromRealm()
         }
     }
 }
