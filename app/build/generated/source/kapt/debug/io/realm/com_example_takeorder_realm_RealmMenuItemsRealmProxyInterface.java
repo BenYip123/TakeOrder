@@ -10,7 +10,6 @@ public interface com_example_takeorder_realm_RealmMenuItemsRealmProxyInterface {
     public void realmSet$price(long value);
     public String realmGet$description();
     public void realmSet$description(String value);
-    public String realmGet$category();
-    public void realmSet$category(String value);
+    public RealmResults<com.example.takeorder.realm.RealmMenuCategory> realmGet$category();
     public RealmResults<com.example.takeorder.realm.RealmMenuItemsOrders> realmGet$itemOrder();
 }

@@ -18,7 +18,8 @@ open class RealmMenuItems (
 
     var price: Long = 0,
     var description: String = "",
-    var category: String = "",
+    @LinkingObjects("items")
+    val category: RealmResults<RealmMenuCategory>? = null,
 
     //Link back to RealmMenuItemsOrders
     @LinkingObjects("menuItem")
@@ -33,15 +34,25 @@ open class RealmMenuItems (
             } else {
                 maxID.toLong() + 1
             }
-            val menuItem = RealmMenuItems(newID, name, price, description, category)
+            val menuItem = RealmMenuItems(newID, name, price, description)
+            val category = realm.where(RealmMenuCategory::class.java).equalTo("category", category).findFirst()
+            category?.items?.add(menuItem)
             realm.copyToRealmOrUpdate(menuItem)
         }
     }
     fun update(id: Long, name: String, price: Long, description: String, category: String){
         val realm = Realm.getDefaultInstance()
         realm.executeTransaction{
-            val menuItem = RealmMenuItems(id, name, price, description, category)
+            val menuItem = RealmMenuItems(id, name, price, description)
+            val oldCategory = realm.where(RealmMenuCategory::class.java).equalTo("items.id", id).findFirst()
+            val newCategory = realm.where(RealmMenuCategory::class.java).equalTo("category", category).findFirst()
             realm.insertOrUpdate(menuItem)
+            // if category has changed, remove it from the old category and add to the new
+            if(oldCategory?.category != category){
+                val newMenuItem = realm.where(RealmMenuItems::class.java).equalTo("id", id).findFirst()
+                oldCategory?.items?.remove(newMenuItem)
+                newCategory?.items?.add(newMenuItem)
+            }
         }
     }
     fun delete(id: Long){

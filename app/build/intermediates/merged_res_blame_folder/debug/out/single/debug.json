@@ -108,6 +108,10 @@
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\mipmap-mdpi\\ic_history_round.png"
     },
     {
+        "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_child_order_recyclerview_row.xml.flat",
+        "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\child_order_recyclerview_row.xml"
+    },
+    {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_history_round.png.flat",
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\mipmap-xhdpi\\ic_history_round.png"
     },
@@ -182,6 +186,10 @@
     {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_recyclerview_row.xml.flat",
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\recyclerview_row.xml"
+    },
+    {
+        "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_order_recyclerview_row.xml.flat",
+        "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\order_recyclerview_row.xml"
     },
     {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_home_round.png.flat",

@@ -26,20 +26,22 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
     private static final Set<Class<? extends RealmModel>> MODEL_CLASSES;
     static {
-        Set<Class<? extends RealmModel>> modelClasses = new HashSet<Class<? extends RealmModel>>(4);
-        modelClasses.add(com.example.takeorder.realm.RealmMenuItems.class);
+        Set<Class<? extends RealmModel>> modelClasses = new HashSet<Class<? extends RealmModel>>(5);
+        modelClasses.add(com.example.takeorder.realm.RealmMenuCategory.class);
         modelClasses.add(com.example.takeorder.realm.RealmStaff.class);
         modelClasses.add(com.example.takeorder.realm.RealmOrders.class);
+        modelClasses.add(com.example.takeorder.realm.RealmMenuItems.class);
         modelClasses.add(com.example.takeorder.realm.RealmMenuItemsOrders.class);
         MODEL_CLASSES = Collections.unmodifiableSet(modelClasses);
     }
 
     @Override
     public Map<Class<? extends RealmModel>, OsObjectSchemaInfo> getExpectedObjectSchemaInfoMap() {
-        Map<Class<? extends RealmModel>, OsObjectSchemaInfo> infoMap = new HashMap<Class<? extends RealmModel>, OsObjectSchemaInfo>(4);
-        infoMap.put(com.example.takeorder.realm.RealmMenuItems.class, io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.getExpectedObjectSchemaInfo());
+        Map<Class<? extends RealmModel>, OsObjectSchemaInfo> infoMap = new HashMap<Class<? extends RealmModel>, OsObjectSchemaInfo>(5);
+        infoMap.put(com.example.takeorder.realm.RealmMenuCategory.class, io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.getExpectedObjectSchemaInfo());
         infoMap.put(com.example.takeorder.realm.RealmStaff.class, io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.getExpectedObjectSchemaInfo());
         infoMap.put(com.example.takeorder.realm.RealmOrders.class, io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.getExpectedObjectSchemaInfo());
+        infoMap.put(com.example.takeorder.realm.RealmMenuItems.class, io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.getExpectedObjectSchemaInfo());
         infoMap.put(com.example.takeorder.realm.RealmMenuItemsOrders.class, io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.getExpectedObjectSchemaInfo());
         return infoMap;
     }
@@ -48,14 +50,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
     public ColumnInfo createColumnInfo(Class<? extends RealmModel> clazz, OsSchemaInfo schemaInfo) {
         checkClass(clazz);
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createColumnInfo(schemaInfo);
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.createColumnInfo(schemaInfo);
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.createColumnInfo(schemaInfo);
         }
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.createColumnInfo(schemaInfo);
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createColumnInfo(schemaInfo);
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.createColumnInfo(schemaInfo);
@@ -67,14 +72,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
     public String getSimpleClassNameImpl(Class<? extends RealmModel> clazz) {
         checkClass(clazz);
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return "RealmMenuItems";
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return "RealmMenuCategory";
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return "RealmStaff";
         }
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return "RealmOrders";
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return "RealmMenuItems";
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return "RealmMenuItemsOrders";
@@ -86,14 +94,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
     public Class<? extends RealmModel> getClazzImpl(String className) {
         checkClassName(className);
 
-        if (className.equals("RealmMenuItems")) {
-            return com.example.takeorder.realm.RealmMenuItems.class;
+        if (className.equals("RealmMenuCategory")) {
+            return com.example.takeorder.realm.RealmMenuCategory.class;
         }
         if (className.equals("RealmStaff")) {
             return com.example.takeorder.realm.RealmStaff.class;
         }
         if (className.equals("RealmOrders")) {
             return com.example.takeorder.realm.RealmOrders.class;
+        }
+        if (className.equals("RealmMenuItems")) {
+            return com.example.takeorder.realm.RealmMenuItems.class;
         }
         if (className.equals("RealmMenuItemsOrders")) {
             return com.example.takeorder.realm.RealmMenuItemsOrders.class;
@@ -103,9 +114,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
     @Override
     public boolean hasPrimaryKeyImpl(Class<? extends RealmModel> clazz) {
-        return com.example.takeorder.realm.RealmMenuItems.class.isAssignableFrom(clazz)
+        return com.example.takeorder.realm.RealmMenuCategory.class.isAssignableFrom(clazz)
                 || com.example.takeorder.realm.RealmStaff.class.isAssignableFrom(clazz)
-                || com.example.takeorder.realm.RealmOrders.class.isAssignableFrom(clazz);
+                || com.example.takeorder.realm.RealmOrders.class.isAssignableFrom(clazz)
+                || com.example.takeorder.realm.RealmMenuItems.class.isAssignableFrom(clazz);
     }
 
     @Override
@@ -115,14 +127,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
             objectContext.set((BaseRealm) baseRealm, row, columnInfo, acceptDefaultValue, excludeFields);
             checkClass(clazz);
 
-            if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-                return clazz.cast(new io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy());
+            if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+                return clazz.cast(new io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy());
             }
             if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
                 return clazz.cast(new io.realm.com_example_takeorder_realm_RealmStaffRealmProxy());
             }
             if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
                 return clazz.cast(new io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy());
+            }
+            if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+                return clazz.cast(new io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy());
             }
             if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
                 return clazz.cast(new io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy());
@@ -144,9 +159,9 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         // generated by RealmProxy or the original type extending directly from RealmObject
         @SuppressWarnings("unchecked") Class<E> clazz = (Class<E>) ((obj instanceof RealmObjectProxy) ? obj.getClass().getSuperclass() : obj.getClass());
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            com_example_takeorder_realm_RealmMenuItemsRealmProxy.RealmMenuItemsColumnInfo columnInfo = (com_example_takeorder_realm_RealmMenuItemsRealmProxy.RealmMenuItemsColumnInfo) realm.getSchema().getColumnInfo(com.example.takeorder.realm.RealmMenuItems.class);
-            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.copyOrUpdate(realm, columnInfo, (com.example.takeorder.realm.RealmMenuItems) obj, update, cache, flags));
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            com_example_takeorder_realm_RealmMenuCategoryRealmProxy.RealmMenuCategoryColumnInfo columnInfo = (com_example_takeorder_realm_RealmMenuCategoryRealmProxy.RealmMenuCategoryColumnInfo) realm.getSchema().getColumnInfo(com.example.takeorder.realm.RealmMenuCategory.class);
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.copyOrUpdate(realm, columnInfo, (com.example.takeorder.realm.RealmMenuCategory) obj, update, cache, flags));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             com_example_takeorder_realm_RealmStaffRealmProxy.RealmStaffColumnInfo columnInfo = (com_example_takeorder_realm_RealmStaffRealmProxy.RealmStaffColumnInfo) realm.getSchema().getColumnInfo(com.example.takeorder.realm.RealmStaff.class);
@@ -155,6 +170,10 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             com_example_takeorder_realm_RealmOrdersRealmProxy.RealmOrdersColumnInfo columnInfo = (com_example_takeorder_realm_RealmOrdersRealmProxy.RealmOrdersColumnInfo) realm.getSchema().getColumnInfo(com.example.takeorder.realm.RealmOrders.class);
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.copyOrUpdate(realm, columnInfo, (com.example.takeorder.realm.RealmOrders) obj, update, cache, flags));
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            com_example_takeorder_realm_RealmMenuItemsRealmProxy.RealmMenuItemsColumnInfo columnInfo = (com_example_takeorder_realm_RealmMenuItemsRealmProxy.RealmMenuItemsColumnInfo) realm.getSchema().getColumnInfo(com.example.takeorder.realm.RealmMenuItems.class);
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.copyOrUpdate(realm, columnInfo, (com.example.takeorder.realm.RealmMenuItems) obj, update, cache, flags));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.RealmMenuItemsOrdersColumnInfo columnInfo = (com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.RealmMenuItemsOrdersColumnInfo) realm.getSchema().getColumnInfo(com.example.takeorder.realm.RealmMenuItemsOrders.class);
@@ -169,12 +188,14 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         // generated by RealmProxy or the original type extending directly from RealmObject
         @SuppressWarnings("unchecked") Class<RealmModel> clazz = (Class<RealmModel>) ((object instanceof RealmObjectProxy) ? object.getClass().getSuperclass() : object.getClass());
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuItems) object, cache);
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuCategory) object, cache);
         } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.insert(realm, (com.example.takeorder.realm.RealmStaff) object, cache);
         } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.insert(realm, (com.example.takeorder.realm.RealmOrders) object, cache);
+        } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuItems) object, cache);
         } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuItemsOrders) object, cache);
         } else {
@@ -194,24 +215,28 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
             // generated by RealmProxy or the original type extending directly from RealmObject
             @SuppressWarnings("unchecked") Class<RealmModel> clazz = (Class<RealmModel>) ((object instanceof RealmObjectProxy) ? object.getClass().getSuperclass() : object.getClass());
 
-            if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-                io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuItems) object, cache);
+            if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+                io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuCategory) object, cache);
             } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
                 io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.insert(realm, (com.example.takeorder.realm.RealmStaff) object, cache);
             } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
                 io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.insert(realm, (com.example.takeorder.realm.RealmOrders) object, cache);
+            } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+                io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuItems) object, cache);
             } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
                 io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.insert(realm, (com.example.takeorder.realm.RealmMenuItemsOrders) object, cache);
             } else {
                 throw getMissingProxyClassException(clazz);
             }
             if (iterator.hasNext()) {
-                if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-                    io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insert(realm, iterator, cache);
+                if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+                    io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.insert(realm, iterator, cache);
                 } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
                     io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.insert(realm, iterator, cache);
                 } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
                     io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.insert(realm, iterator, cache);
+                } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+                    io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insert(realm, iterator, cache);
                 } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
                     io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.insert(realm, iterator, cache);
                 } else {
@@ -227,12 +252,14 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         // generated by RealmProxy or the original type extending directly from RealmObject
         @SuppressWarnings("unchecked") Class<RealmModel> clazz = (Class<RealmModel>) ((obj instanceof RealmObjectProxy) ? obj.getClass().getSuperclass() : obj.getClass());
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuItems) obj, cache);
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuCategory) obj, cache);
         } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmStaff) obj, cache);
         } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmOrders) obj, cache);
+        } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuItems) obj, cache);
         } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuItemsOrders) obj, cache);
         } else {
@@ -252,24 +279,28 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
             // generated by RealmProxy or the original type extending directly from RealmObject
             @SuppressWarnings("unchecked") Class<RealmModel> clazz = (Class<RealmModel>) ((object instanceof RealmObjectProxy) ? object.getClass().getSuperclass() : object.getClass());
 
-            if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-                io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuItems) object, cache);
+            if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+                io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuCategory) object, cache);
             } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
                 io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmStaff) object, cache);
             } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
                 io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmOrders) object, cache);
+            } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+                io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuItems) object, cache);
             } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
                 io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.insertOrUpdate(realm, (com.example.takeorder.realm.RealmMenuItemsOrders) object, cache);
             } else {
                 throw getMissingProxyClassException(clazz);
             }
             if (iterator.hasNext()) {
-                if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-                    io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insertOrUpdate(realm, iterator, cache);
+                if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+                    io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
                     io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
                     io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.insertOrUpdate(realm, iterator, cache);
+                } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+                    io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
                     io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else {
@@ -284,14 +315,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         throws JSONException {
         checkClass(clazz);
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
@@ -304,14 +338,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         throws IOException {
         checkClass(clazz);
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createUsingJsonStream(realm, reader));
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.createUsingJsonStream(realm, reader));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.createUsingJsonStream(realm, reader));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.createUsingJsonStream(realm, reader));
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createUsingJsonStream(realm, reader));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.createUsingJsonStream(realm, reader));
@@ -325,14 +362,17 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         // generated by RealmProxy or the original type extending directly from RealmObject
         @SuppressWarnings("unchecked") Class<E> clazz = (Class<E>) realmObject.getClass().getSuperclass();
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createDetachedCopy((com.example.takeorder.realm.RealmMenuItems) realmObject, 0, maxDepth, cache));
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuCategoryRealmProxy.createDetachedCopy((com.example.takeorder.realm.RealmMenuCategory) realmObject, 0, maxDepth, cache));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmStaffRealmProxy.createDetachedCopy((com.example.takeorder.realm.RealmStaff) realmObject, 0, maxDepth, cache));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmOrdersRealmProxy.createDetachedCopy((com.example.takeorder.realm.RealmOrders) realmObject, 0, maxDepth, cache));
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsRealmProxy.createDetachedCopy((com.example.takeorder.realm.RealmMenuItems) realmObject, 0, maxDepth, cache));
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             return clazz.cast(io.realm.com_example_takeorder_realm_RealmMenuItemsOrdersRealmProxy.createDetachedCopy((com.example.takeorder.realm.RealmMenuItemsOrders) realmObject, 0, maxDepth, cache));
@@ -342,13 +382,16 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
     @Override
     public <E extends RealmModel> boolean isEmbedded(Class<E> clazz) {
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
             return false;
         }
         if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             return false;
         }
         if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
+            return false;
+        }
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
             return false;
         }
         if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
@@ -363,12 +406,14 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
         // generated by RealmProxy or the original type extending directly from RealmObject
         @SuppressWarnings("unchecked") Class<E> clazz = (Class<E>) managedObject.getClass().getSuperclass();
 
-        if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
-            throw getNotEmbeddedClassException("com.example.takeorder.realm.RealmMenuItems");
+        if (clazz.equals(com.example.takeorder.realm.RealmMenuCategory.class)) {
+            throw getNotEmbeddedClassException("com.example.takeorder.realm.RealmMenuCategory");
         } else if (clazz.equals(com.example.takeorder.realm.RealmStaff.class)) {
             throw getNotEmbeddedClassException("com.example.takeorder.realm.RealmStaff");
         } else if (clazz.equals(com.example.takeorder.realm.RealmOrders.class)) {
             throw getNotEmbeddedClassException("com.example.takeorder.realm.RealmOrders");
+        } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItems.class)) {
+            throw getNotEmbeddedClassException("com.example.takeorder.realm.RealmMenuItems");
         } else if (clazz.equals(com.example.takeorder.realm.RealmMenuItemsOrders.class)) {
             throw getNotEmbeddedClassException("com.example.takeorder.realm.RealmMenuItemsOrders");
         } else {

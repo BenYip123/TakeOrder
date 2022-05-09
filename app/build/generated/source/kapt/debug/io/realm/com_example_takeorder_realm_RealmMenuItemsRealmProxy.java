@@ -48,16 +48,15 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
         long nameColKey;
         long priceColKey;
         long descriptionColKey;
-        long categoryColKey;
 
         RealmMenuItemsColumnInfo(OsSchemaInfo schemaInfo) {
-            super(5);
+            super(4);
             OsObjectSchemaInfo objectSchemaInfo = schemaInfo.getObjectSchemaInfo("RealmMenuItems");
             this.idColKey = addColumnDetails("id", "id", objectSchemaInfo);
             this.nameColKey = addColumnDetails("name", "name", objectSchemaInfo);
             this.priceColKey = addColumnDetails("price", "price", objectSchemaInfo);
             this.descriptionColKey = addColumnDetails("description", "description", objectSchemaInfo);
-            this.categoryColKey = addColumnDetails("category", "category", objectSchemaInfo);
+            addBacklinkDetails(schemaInfo, "category", "RealmMenuCategory", "items");
             addBacklinkDetails(schemaInfo, "itemOrder", "RealmMenuItemsOrders", "menuItem");
         }
 
@@ -79,7 +78,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
             dst.nameColKey = src.nameColKey;
             dst.priceColKey = src.priceColKey;
             dst.descriptionColKey = src.descriptionColKey;
-            dst.categoryColKey = src.categoryColKey;
         }
     }
 
@@ -88,6 +86,7 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
 
     private RealmMenuItemsColumnInfo columnInfo;
     private ProxyState<com.example.takeorder.realm.RealmMenuItems> proxyState;
+    private RealmResults<com.example.takeorder.realm.RealmMenuCategory> categoryBacklinks;
     private RealmResults<com.example.takeorder.realm.RealmMenuItemsOrders> itemOrderBacklinks;
 
     com_example_takeorder_realm_RealmMenuItemsRealmProxy() {
@@ -205,31 +204,14 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
     }
 
     @Override
-    @SuppressWarnings("cast")
-    public String realmGet$category() {
-        proxyState.getRealm$realm().checkIfValid();
-        return (java.lang.String) proxyState.getRow$realm().getString(columnInfo.categoryColKey);
-    }
-
-    @Override
-    public void realmSet$category(String value) {
-        if (proxyState.isUnderConstruction()) {
-            if (!proxyState.getAcceptDefaultValue$realm()) {
-                return;
-            }
-            final Row row = proxyState.getRow$realm();
-            if (value == null) {
-                throw new IllegalArgumentException("Trying to set non-nullable field 'category' to null.");
-            }
-            row.getTable().setString(columnInfo.categoryColKey, row.getObjectKey(), value, true);
-            return;
+    public RealmResults<com.example.takeorder.realm.RealmMenuCategory> realmGet$category() {
+        BaseRealm realm = proxyState.getRealm$realm();
+        realm.checkIfValid();
+        proxyState.getRow$realm().checkIfAttached();
+        if (categoryBacklinks == null) {
+            categoryBacklinks = RealmResults.createBacklinkResults(realm, proxyState.getRow$realm(), com.example.takeorder.realm.RealmMenuCategory.class, "items");
         }
-
-        proxyState.getRealm$realm().checkIfValid();
-        if (value == null) {
-            throw new IllegalArgumentException("Trying to set non-nullable field 'category' to null.");
-        }
-        proxyState.getRow$realm().setString(columnInfo.categoryColKey, value);
+        return categoryBacklinks;
     }
 
     @Override
@@ -244,12 +226,12 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
     }
 
     private static OsObjectSchemaInfo createExpectedObjectSchemaInfo() {
-        OsObjectSchemaInfo.Builder builder = new OsObjectSchemaInfo.Builder(NO_ALIAS, "RealmMenuItems", false, 5, 1);
+        OsObjectSchemaInfo.Builder builder = new OsObjectSchemaInfo.Builder(NO_ALIAS, "RealmMenuItems", false, 4, 2);
         builder.addPersistedProperty(NO_ALIAS, "id", RealmFieldType.INTEGER, Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "name", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "price", RealmFieldType.INTEGER, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
         builder.addPersistedProperty(NO_ALIAS, "description", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
-        builder.addPersistedProperty(NO_ALIAS, "category", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, Property.REQUIRED);
+        builder.addComputedLinkProperty("category", "RealmMenuCategory", "items");
         builder.addComputedLinkProperty("itemOrder", "RealmMenuItemsOrders", "menuItem");
         return builder.build();
     }
@@ -327,13 +309,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
                 objProxy.realmSet$description((String) json.getString("description"));
             }
         }
-        if (json.has("category")) {
-            if (json.isNull("category")) {
-                objProxy.realmSet$category(null);
-            } else {
-                objProxy.realmSet$category((String) json.getString("category"));
-            }
-        }
         return obj;
     }
 
@@ -376,13 +351,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
                 } else {
                     reader.skipValue();
                     objProxy.realmSet$description(null);
-                }
-            } else if (name.equals("category")) {
-                if (reader.peek() != JsonToken.NULL) {
-                    objProxy.realmSet$category((String) reader.nextString());
-                } else {
-                    reader.skipValue();
-                    objProxy.realmSet$category(null);
                 }
             } else {
                 reader.skipValue();
@@ -458,7 +426,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
         builder.addString(columnInfo.nameColKey, unmanagedSource.realmGet$name());
         builder.addInteger(columnInfo.priceColKey, unmanagedSource.realmGet$price());
         builder.addString(columnInfo.descriptionColKey, unmanagedSource.realmGet$description());
-        builder.addString(columnInfo.categoryColKey, unmanagedSource.realmGet$category());
 
         // Create the underlying object and cache it before setting any object/objectlist references
         // This will allow us to break any circular dependencies by using the object cache.
@@ -496,10 +463,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
         String realmGet$description = ((com_example_takeorder_realm_RealmMenuItemsRealmProxyInterface) object).realmGet$description();
         if (realmGet$description != null) {
             Table.nativeSetString(tableNativePtr, columnInfo.descriptionColKey, objKey, realmGet$description, false);
-        }
-        String realmGet$category = ((com_example_takeorder_realm_RealmMenuItemsRealmProxyInterface) object).realmGet$category();
-        if (realmGet$category != null) {
-            Table.nativeSetString(tableNativePtr, columnInfo.categoryColKey, objKey, realmGet$category, false);
         }
         return objKey;
     }
@@ -539,10 +502,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
             if (realmGet$description != null) {
                 Table.nativeSetString(tableNativePtr, columnInfo.descriptionColKey, objKey, realmGet$description, false);
             }
-            String realmGet$category = ((com_example_takeorder_realm_RealmMenuItemsRealmProxyInterface) object).realmGet$category();
-            if (realmGet$category != null) {
-                Table.nativeSetString(tableNativePtr, columnInfo.categoryColKey, objKey, realmGet$category, false);
-            }
         }
     }
 
@@ -575,12 +534,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
             Table.nativeSetString(tableNativePtr, columnInfo.descriptionColKey, objKey, realmGet$description, false);
         } else {
             Table.nativeSetNull(tableNativePtr, columnInfo.descriptionColKey, objKey, false);
-        }
-        String realmGet$category = ((com_example_takeorder_realm_RealmMenuItemsRealmProxyInterface) object).realmGet$category();
-        if (realmGet$category != null) {
-            Table.nativeSetString(tableNativePtr, columnInfo.categoryColKey, objKey, realmGet$category, false);
-        } else {
-            Table.nativeSetNull(tableNativePtr, columnInfo.categoryColKey, objKey, false);
         }
         return objKey;
     }
@@ -622,12 +575,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
             } else {
                 Table.nativeSetNull(tableNativePtr, columnInfo.descriptionColKey, objKey, false);
             }
-            String realmGet$category = ((com_example_takeorder_realm_RealmMenuItemsRealmProxyInterface) object).realmGet$category();
-            if (realmGet$category != null) {
-                Table.nativeSetString(tableNativePtr, columnInfo.categoryColKey, objKey, realmGet$category, false);
-            } else {
-                Table.nativeSetNull(tableNativePtr, columnInfo.categoryColKey, objKey, false);
-            }
         }
     }
 
@@ -655,7 +602,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
         unmanagedCopy.realmSet$name(realmSource.realmGet$name());
         unmanagedCopy.realmSet$price(realmSource.realmGet$price());
         unmanagedCopy.realmSet$description(realmSource.realmGet$description());
-        unmanagedCopy.realmSet$category(realmSource.realmGet$category());
 
         return unmanagedObject;
     }
@@ -669,7 +615,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
         builder.addString(columnInfo.nameColKey, realmObjectSource.realmGet$name());
         builder.addInteger(columnInfo.priceColKey, realmObjectSource.realmGet$price());
         builder.addString(columnInfo.descriptionColKey, realmObjectSource.realmGet$description());
-        builder.addString(columnInfo.categoryColKey, realmObjectSource.realmGet$category());
 
         builder.updateExistingTopLevelObject();
         return realmObject;
@@ -696,10 +641,6 @@ public class com_example_takeorder_realm_RealmMenuItemsRealmProxy extends com.ex
         stringBuilder.append(",");
         stringBuilder.append("{description:");
         stringBuilder.append(realmGet$description());
-        stringBuilder.append("}");
-        stringBuilder.append(",");
-        stringBuilder.append("{category:");
-        stringBuilder.append(realmGet$category());
         stringBuilder.append("}");
         stringBuilder.append("]");
         return stringBuilder.toString();

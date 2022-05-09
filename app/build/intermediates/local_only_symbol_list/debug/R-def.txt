@@ -40,12 +40,20 @@ id adminStaff
 id adminStaffFragment
 id bottomNavView
 id category_spinner
+id category_textview
+id child_recyclerview
+id decrease_button
 id deleteButton
 id description
 id editButton
 id expensiveBtn
 id homeFragment
 id homeText
+id increase_button
+id itemRecyclerView
+id item_description
+id item_name
+id item_price
 id list
 id login_button
 id logout
@@ -61,6 +69,7 @@ id orderHistoryFragment
 id password
 id passwordWrapper
 id price
+id quantity_counter
 id relativeLayout
 id role_spinner
 id sortButtons
@@ -76,6 +85,7 @@ id usernameWrapper
 id welcomeMessage
 layout activity_login
 layout activity_main
+layout child_order_recyclerview_row
 layout edit_menu
 layout edit_staff
 layout fragment_admin
@@ -84,6 +94,7 @@ layout fragment_admin_staff
 layout fragment_home
 layout fragment_order
 layout fragment_order_history
+layout order_recyclerview_row
 layout recyclerview_row
 menu appbar_menu
 menu bottom_nav_menu

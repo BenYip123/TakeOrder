@@ -3,6 +3,7 @@ package com.example.takeorder.adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.TextWatcher
@@ -12,14 +13,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.text.bold
+import androidx.core.text.italic
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.takeorder.R
 import com.example.takeorder.realm.RealmMenuItems
 import com.example.takeorder.realm.RealmOrders
 import com.example.takeorder.realm.RealmStaff
+import com.example.takeorder.realm.RealmMenuCategory
 import io.realm.OrderedRealmCollection
+import io.realm.Realm
 import io.realm.RealmRecyclerViewAdapter
 import org.w3c.dom.Text
+import java.io.Serializable
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -226,6 +233,9 @@ internal class MenuRecyclerViewAdapter(private val context: Context, data: Order
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         //val obj = getItem(position)
         val obj: RealmMenuItems? = data!![position]
+        val realm = Realm.getDefaultInstance()
+        val categoryObj = realm.where(RealmMenuCategory::class.java).equalTo("items.id", obj!!.id).findFirst()
+        val category = categoryObj?.category
         Log.i(TAG, "Binding view holder: ${obj!!.id}")
         // build strings to be displayed inside each recyclerview
         holder.itemId.text =
@@ -244,14 +254,15 @@ internal class MenuRecyclerViewAdapter(private val context: Context, data: Order
             )
         holder.description.text =
             SpannableStringBuilder().bold { append("Description ") }.append(obj.description)
-        holder.category.text = SpannableStringBuilder().bold { append("Category ")}.append(obj.category)
+        holder.category.text = SpannableStringBuilder().bold { append("Category ")}.append(category)
+
         holder.editButton.setOnClickListener {
             editMenuDialog(
                 obj.id,
                 obj.name,
                 obj.price,
                 obj.description,
-                obj.category
+                category!!
             )
         }
         holder.deleteButton.setOnClickListener {
@@ -371,5 +382,126 @@ internal class MenuRecyclerViewAdapter(private val context: Context, data: Order
             }
         val alert = builder.create()
         alert.show()
+    }
+}
+
+internal class ChildMenuOrderRecyclerViewAdapter(private val context: Context, data: OrderedRealmCollection<RealmMenuItems?>?) :
+    RealmRecyclerViewAdapter<RealmMenuItems?,
+            ChildMenuOrderRecyclerViewAdapter.ChildMenuOrderViewHolder?>(data, true) {
+    var TAG = "REALM_RECYCLER_ADAPTER"
+    var orderMap = HashMap<RealmMenuItems, Int>()
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ChildMenuOrderViewHolder {
+        Log.i(TAG, "Creating view holder")
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.child_order_recyclerview_row, parent, false)
+        return ChildMenuOrderViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ChildMenuOrderViewHolder, position: Int) {
+        val obj: RealmMenuItems? = data!![position]
+        Log.i(TAG, "Binding view holder: ${obj!!.id}")
+        // build strings to be displayed inside each recyclerview
+        holder.item.text = obj.name
+        holder.description.text = obj.description
+        holder.price.text = SpannableStringBuilder().bold { append("£")
+            .append(
+                DecimalFormat("#,##0.00")
+                    .format(
+                        obj.price.toBigDecimal().divide(
+                            BigDecimal(100)
+                        )
+                    ).toString()
+            )}
+        holder.increaseButton.setOnClickListener{
+            // get the counter as a string then convert to int
+            var quantity = holder.counter.text.toString().toInt()
+            quantity++
+            holder.counter.text = quantity.toString()
+            orderMap[obj] = quantity
+        }
+        holder.decreaseButton.setOnClickListener{
+            // get the counter as a string then convert to int
+            var quantity = holder.counter.text.toString().toInt()
+            if(quantity > 0) {
+                quantity--
+                holder.counter.text = quantity.toString()
+                orderMap[obj] = quantity
+            }
+        }
+    }
+
+    override fun getItemId(index: Int): Long {
+        return getItem(index)!!.id
+    }
+
+    internal inner class ChildMenuOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var item: TextView = itemView.findViewById(R.id.item_name)
+        var description: TextView = itemView.findViewById(R.id.item_description)
+        var price: TextView = itemView.findViewById(R.id.item_price)
+        var increaseButton: Button = itemView.findViewById(R.id.increase_button)
+        var decreaseButton: Button = itemView.findViewById(R.id.decrease_button)
+        var counter: TextView = itemView.findViewById(R.id.quantity_counter)
+    }
+
+    init {
+        Log.i(
+            TAG,
+            "Created RealmRecyclerViewAdapter for ${getData()!!.size} menu ordering."
+        )
+    }
+}
+
+internal class MenuOrderRecyclerViewAdapter(private val context: Context, data: OrderedRealmCollection<RealmMenuCategory?>?) :
+    RealmRecyclerViewAdapter<RealmMenuCategory?,
+            MenuOrderRecyclerViewAdapter.MenuOrderViewHolder?>(data, true), Serializable {
+    var TAG = "REALM_RECYCLER_ADAPTER"
+    var orderMap = HashMap<RealmMenuItems, Int>()
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MenuOrderViewHolder {
+        Log.i(TAG, "Creating view holder")
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.order_recyclerview_row, parent, false)
+        return MenuOrderViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: MenuOrderViewHolder, position: Int) {
+        val obj: RealmMenuCategory? = data!![position]
+        Log.i(TAG, "Binding view holder: ${obj!!.category}")
+        //initialise child recycler view inside the parent
+        val adapter = ChildMenuOrderRecyclerViewAdapter(context, obj.items)
+        holder.childRecyclerView.setHasFixedSize(true)
+        holder.childRecyclerView.layoutManager = LinearLayoutManager(context)
+        holder.childRecyclerView.adapter = adapter
+        orderMap = adapter.orderMap
+        // adds divider line between each recycler item
+        holder.childRecyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
+        holder.category.text = SpannableStringBuilder().italic { append(obj.category.uppercase()) }
+    }
+
+    /*override fun getItemId(index: Int): Long {
+        return getItem(index)!!.id
+    }*/
+
+    internal inner class MenuOrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var category: TextView = itemView.findViewById(R.id.category_textview)
+        var childRecyclerView: RecyclerView = itemView.findViewById(R.id.child_recyclerview)
+    }
+
+    init {
+        Log.i(
+            TAG,
+            "Created RealmRecyclerViewAdapter for ${getData()!!.size} menu ordering."
+        )
+    }
+    fun getMap(): Bundle {
+        val bundle = Bundle()
+        bundle.putSerializable("orderBundle", orderMap)
+        return bundle
     }
 }

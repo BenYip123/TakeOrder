@@ -2694,6 +2694,7 @@ id cancel_action
 id cancel_button
 id carryVelocity
 id category_spinner
+id category_textview
 id center
 id center_horizontal
 id center_vertical
@@ -2702,6 +2703,7 @@ id chain2
 id chains
 id checkbox
 id checked
+id child_recyclerview
 id chip
 id chip1
 id chip2
@@ -2734,6 +2736,7 @@ id date_picker_actions
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
+id decrease_button
 id default_activity_button
 id deleteButton
 id deltaRelative
@@ -2814,6 +2817,7 @@ id ignoreRequest
 id image
 id immediateStop
 id included
+id increase_button
 id info
 id invisible
 id inward
@@ -2822,6 +2826,10 @@ id item1
 id item2
 id item3
 id item4
+id itemRecyclerView
+id item_description
+id item_name
+id item_price
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -2951,6 +2959,7 @@ id postLayout
 id price
 id progress_circular
 id progress_horizontal
+id quantity_counter
 id radio
 id ratio
 id rectangles
@@ -3199,6 +3208,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_login
 layout activity_main
+layout child_order_recyclerview_row
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3284,6 +3294,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout order_recyclerview_row
 layout recyclerview_row
 layout select_dialog_item_material
 layout select_dialog_multichoice_material

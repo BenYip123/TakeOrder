@@ -24,6 +24,7 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\beny5\.g
 MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\beny5\.gradle\caches\transforms-3\95b7fe357753c14a5ea2322184bdc229\transformed\lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.5.0] C:\Users\beny5\.gradle\caches\transforms-3\9030e3a76131e643489be929b38eb016\transformed\material-1.5.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\beny5\.gradle\caches\transforms-3\44c3c4e3f77ba87939244152f0c5a639\transformed\constraintlayout-2.1.3\AndroidManifest.xml:2:1-11:12
+MERGED from [io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.1.0] C:\Users\beny5\.gradle\caches\transforms-3\0b19d24bcdc648d6ac8f0272bc6cb3f3\transformed\sectionedrecyclerviewadapter-3.1.0\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\beny5\.gradle\caches\transforms-3\77918c2ef23a0b5c9bc82e3eb29062fd\transformed\appcompat-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\9d23beaee0111478ca1754354dc8710a\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.4.1] C:\Users\beny5\.gradle\caches\transforms-3\3764b68952c5611936d54174c9ccbb36\transformed\fragment-1.4.1\AndroidManifest.xml:17:1-24:12
@@ -95,6 +96,8 @@ MERGED from [com.google.android.material:material:1.5.0] C:\Users\beny5\.gradle\
 MERGED from [com.google.android.material:material:1.5.0] C:\Users\beny5\.gradle\caches\transforms-3\9030e3a76131e643489be929b38eb016\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\beny5\.gradle\caches\transforms-3\44c3c4e3f77ba87939244152f0c5a639\transformed\constraintlayout-2.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\beny5\.gradle\caches\transforms-3\44c3c4e3f77ba87939244152f0c5a639\transformed\constraintlayout-2.1.3\AndroidManifest.xml:9:5-20
+MERGED from [io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.1.0] C:\Users\beny5\.gradle\caches\transforms-3\0b19d24bcdc648d6ac8f0272bc6cb3f3\transformed\sectionedrecyclerviewadapter-3.1.0\AndroidManifest.xml:11:5-12:19
+MERGED from [io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.1.0] C:\Users\beny5\.gradle\caches\transforms-3\0b19d24bcdc648d6ac8f0272bc6cb3f3\transformed\sectionedrecyclerviewadapter-3.1.0\AndroidManifest.xml:11:5-12:19
 MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\7daecfc7d1683e2336c84105e2781496\transformed\emoji2-1.0.0\AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.core:core:1.7.0] C:\Users\beny5\.gradle\caches\transforms-3\2e86907c8a67b977bfd9310c84c92517\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
@@ -187,6 +190,8 @@ MERGED from [com.google.android.material:material:1.5.0] C:\Users\beny5\.gradle\
 MERGED from [com.google.android.material:material:1.5.0] C:\Users\beny5\.gradle\caches\transforms-3\9030e3a76131e643489be929b38eb016\transformed\material-1.5.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\beny5\.gradle\caches\transforms-3\44c3c4e3f77ba87939244152f0c5a639\transformed\constraintlayout-2.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\beny5\.gradle\caches\transforms-3\44c3c4e3f77ba87939244152f0c5a639\transformed\constraintlayout-2.1.3\AndroidManifest.xml:5:5-7:41
+MERGED from [io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.1.0] C:\Users\beny5\.gradle\caches\transforms-3\0b19d24bcdc648d6ac8f0272bc6cb3f3\transformed\sectionedrecyclerviewadapter-3.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:3.1.0] C:\Users\beny5\.gradle\caches\transforms-3\0b19d24bcdc648d6ac8f0272bc6cb3f3\transformed\sectionedrecyclerviewadapter-3.1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\beny5\.gradle\caches\transforms-3\77918c2ef23a0b5c9bc82e3eb29062fd\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\beny5\.gradle\caches\transforms-3\77918c2ef23a0b5c9bc82e3eb29062fd\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\9d23beaee0111478ca1754354dc8710a\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41

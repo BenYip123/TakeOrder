@@ -1,6 +1,7 @@
 package com.example.takeorder
 
 import android.app.Application
+import com.example.takeorder.realm.RealmMenuCategory
 import com.example.takeorder.realm.RealmMenuItems
 import com.example.takeorder.realm.RealmOrders
 import com.example.takeorder.realm.RealmStaff
@@ -20,6 +21,10 @@ class RealmDB: Application() {
         //initialise Realm database
         initRealm()
 
+        val menuCategory = RealmMenuCategory()
+        menuCategory.insert("food")
+        menuCategory.insert("drink")
+        menuCategory.insert("miscellaneous")
         val staff = RealmStaff()
         staff.insert("bob", "password", "regular")
         val menuItems = RealmMenuItems()
