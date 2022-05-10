@@ -14,9 +14,12 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.text.bold
 import androidx.core.text.italic
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.takeorder.OrderDetailsFragment
+import com.example.takeorder.OrderHistoryFragmentDirections
 import com.example.takeorder.R
 import com.example.takeorder.realm.RealmMenuItems
 import com.example.takeorder.realm.RealmOrders
@@ -31,6 +34,7 @@ import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 /*
  * OrderRecyclerViewAdapter: extends the Realm-provided
@@ -74,7 +78,10 @@ internal class OrderRecyclerViewAdapter(data: OrderedRealmCollection<RealmOrders
         holder.date.text =
             SpannableStringBuilder().bold { append("Date ") }.append(obj.date.toString())
         holder.itemView.setOnClickListener {
-            notifyItemChanged(position)
+            // bundle the order id and send it to the fragment
+            val bundle = Bundle()
+            bundle.putLong("order_id", obj.id)
+            findNavController(holder.itemView).navigate(R.id.action_orderHistoryFragment_to_orderDetailsFragment, bundle)
         }
         // hide textView4,5 and buttons as they are not needed for this view
         holder.textView4.visibility = View.GONE
@@ -385,11 +392,12 @@ internal class MenuRecyclerViewAdapter(private val context: Context, data: Order
     }
 }
 
-internal class ChildMenuOrderRecyclerViewAdapter(private val context: Context, data: OrderedRealmCollection<RealmMenuItems?>?) :
+internal class ChildMenuOrderRecyclerViewAdapter(private val context: Context, data: OrderedRealmCollection<RealmMenuItems?>?,
+                                                 private val menuOrderRecyclerViewCallback: MenuOrderRecyclerViewAdapter.MenuOrderRecyclerViewCallback) :
     RealmRecyclerViewAdapter<RealmMenuItems?,
             ChildMenuOrderRecyclerViewAdapter.ChildMenuOrderViewHolder?>(data, true) {
     var TAG = "REALM_RECYCLER_ADAPTER"
-    var orderMap = HashMap<RealmMenuItems, Int>()
+    var orderMap: MutableMap<RealmMenuItems, Int> = HashMap()
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -421,6 +429,7 @@ internal class ChildMenuOrderRecyclerViewAdapter(private val context: Context, d
             quantity++
             holder.counter.text = quantity.toString()
             orderMap[obj] = quantity
+            menuOrderRecyclerViewCallback.childPressed(this)
         }
         holder.decreaseButton.setOnClickListener{
             // get the counter as a string then convert to int
@@ -430,7 +439,9 @@ internal class ChildMenuOrderRecyclerViewAdapter(private val context: Context, d
                 holder.counter.text = quantity.toString()
                 orderMap[obj] = quantity
             }
+            menuOrderRecyclerViewCallback.childPressed(this)
         }
+
     }
 
     override fun getItemId(index: Int): Long {
@@ -458,7 +469,13 @@ internal class MenuOrderRecyclerViewAdapter(private val context: Context, data: 
     RealmRecyclerViewAdapter<RealmMenuCategory?,
             MenuOrderRecyclerViewAdapter.MenuOrderViewHolder?>(data, true), Serializable {
     var TAG = "REALM_RECYCLER_ADAPTER"
-    var orderMap = HashMap<RealmMenuItems, Int>()
+    var orderMap: MutableMap<RealmMenuItems, Int> = HashMap()
+    val MenuOrderRecyclerViewCallbackImpl = object: MenuOrderRecyclerViewCallback{
+        override fun childPressed(child: ChildMenuOrderRecyclerViewAdapter) {
+            orderMap.putAll(child.orderMap)
+            orderMap.values.removeIf{quantity -> quantity == 0}
+        }
+    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -473,11 +490,11 @@ internal class MenuOrderRecyclerViewAdapter(private val context: Context, data: 
         val obj: RealmMenuCategory? = data!![position]
         Log.i(TAG, "Binding view holder: ${obj!!.category}")
         //initialise child recycler view inside the parent
-        val adapter = ChildMenuOrderRecyclerViewAdapter(context, obj.items)
+        val adapter = ChildMenuOrderRecyclerViewAdapter(context, obj.items, MenuOrderRecyclerViewCallbackImpl)
         holder.childRecyclerView.setHasFixedSize(true)
         holder.childRecyclerView.layoutManager = LinearLayoutManager(context)
         holder.childRecyclerView.adapter = adapter
-        orderMap = adapter.orderMap
+        orderMap.putAll(adapter.orderMap)
         // adds divider line between each recycler item
         holder.childRecyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
@@ -499,9 +516,21 @@ internal class MenuOrderRecyclerViewAdapter(private val context: Context, data: 
             "Created RealmRecyclerViewAdapter for ${getData()!!.size} menu ordering."
         )
     }
-    fun getMap(): Bundle {
+
+    // interface so that child recyclerview adapter can make a callback to the parent
+    interface MenuOrderRecyclerViewCallback{
+        fun childPressed(child: ChildMenuOrderRecyclerViewAdapter)
+    }
+
+    // create a hashmap from mutable map so it can be serialised
+    fun toHashMap(): HashMap<RealmMenuItems, Int> {
+        val orderHashMap = HashMap<RealmMenuItems, Int>(orderMap)
+        return orderHashMap
+    }
+    // convert order data to bundle to send to a new fragment
+    fun getBundle(): Bundle {
         val bundle = Bundle()
-        bundle.putSerializable("orderBundle", orderMap)
+        bundle.putSerializable("orderBundle", toHashMap())
         return bundle
     }
 }

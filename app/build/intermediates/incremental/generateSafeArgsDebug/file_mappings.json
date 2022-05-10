@@ -1,1 +1,1 @@
-[{"navFile":"src\\main\\res\\navigation\\nav_graph.xml","javaFiles":["com.example.takeorder.HomeFragmentDirections","com.example.takeorder.AdminFragmentDirections"]}]
+[{"navFile":"src\\main\\res\\navigation\\nav_graph.xml","javaFiles":["com.example.takeorder.HomeFragmentDirections","com.example.takeorder.OrderFragmentDirections","com.example.takeorder.OrderHistoryFragmentDirections","com.example.takeorder.AdminFragmentDirections","com.example.takeorder.OrderSummaryFragmentDirections","com.example.takeorder.OrderConfirmFragmentDirections"]}]

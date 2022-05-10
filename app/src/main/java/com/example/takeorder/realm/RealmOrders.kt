@@ -25,8 +25,9 @@ open class RealmOrders(
     @LinkingObjects("orders")
     val staff: RealmResults<RealmStaff>? = null
 ) : RealmObject() {
-    fun insert(total_price: Long, date: Date) {
+    fun insert(total_price: Long, date: Date, staff_id: Long): RealmOrders? {
         val realm = Realm.getDefaultInstance()
+        var orders: RealmOrders? = null
         realm.executeTransaction {
             val maxID = realm.where(RealmOrders::class.java).max("id")
             val newID: Long = if (maxID == null || maxID == 0) {
@@ -34,9 +35,14 @@ open class RealmOrders(
             } else {
                 maxID.toLong() + 1
             }
-            val order = RealmOrders(newID, total_price, date)
-            realm.copyToRealmOrUpdate(order)
-            println("true")
+            var order = RealmOrders(newID, total_price, date)
+            val staffOrderList = realm.where(RealmStaff::class.java).equalTo("id", staff_id).findFirst()
+            staffOrderList?.orders?.add(order)
+            orders = realm.copyToRealmOrUpdate(order)
         }
+        return orders
+    }
+    fun queryLatest(){
+        realm.where(RealmOrders::class.java).max("id")
     }
 }

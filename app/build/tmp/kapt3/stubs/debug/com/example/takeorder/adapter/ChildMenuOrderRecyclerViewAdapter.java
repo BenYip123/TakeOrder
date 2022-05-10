@@ -2,15 +2,19 @@ package com.example.takeorder.adapter;
 
 import java.lang.System;
 
-@kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000D\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0005\n\u0002\u0010\t\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0000\u0018\u00002\u0016\u0012\u0006\u0012\u0004\u0018\u00010\u0002\u0012\n\u0012\b\u0018\u00010\u0003R\u00020\u00000\u0001:\u0001\u001bB\u001f\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0010\u0010\u0006\u001a\f\u0012\u0006\u0012\u0004\u0018\u00010\u0002\u0018\u00010\u0007\u00a2\u0006\u0002\u0010\bJ\u0010\u0010\u000f\u001a\u00020\u00102\u0006\u0010\u0011\u001a\u00020\u0012H\u0016J\u001c\u0010\u0013\u001a\u00020\u00142\n\u0010\u0015\u001a\u00060\u0003R\u00020\u00002\u0006\u0010\u0016\u001a\u00020\u0012H\u0016J\u001c\u0010\u0017\u001a\u00060\u0003R\u00020\u00002\u0006\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u001a\u001a\u00020\u0012H\u0016R\u001a\u0010\t\u001a\u00020\nX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u000b\u0010\f\"\u0004\b\r\u0010\u000eR\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001c"}, d2 = {"Lcom/example/takeorder/adapter/ChildMenuOrderRecyclerViewAdapter;", "Lio/realm/RealmRecyclerViewAdapter;", "Lcom/example/takeorder/realm/RealmMenuItems;", "Lcom/example/takeorder/adapter/ChildMenuOrderRecyclerViewAdapter$ChildMenuOrderViewHolder;", "context", "Landroid/content/Context;", "data", "Lio/realm/OrderedRealmCollection;", "(Landroid/content/Context;Lio/realm/OrderedRealmCollection;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "getItemId", "", "index", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "ChildMenuOrderViewHolder", "app_debug"})
+@kotlin.Metadata(mv = {1, 6, 0}, k = 1, d1 = {"\u0000R\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0005\n\u0002\u0010%\n\u0002\u0010\b\n\u0002\b\u0005\n\u0002\u0010\t\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0000\u0018\u00002\u0016\u0012\u0006\u0012\u0004\u0018\u00010\u0002\u0012\n\u0012\b\u0018\u00010\u0003R\u00020\u00000\u0001:\u0001#B\'\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0010\u0010\u0006\u001a\f\u0012\u0006\u0012\u0004\u0018\u00010\u0002\u0018\u00010\u0007\u0012\u0006\u0010\b\u001a\u00020\t\u00a2\u0006\u0002\u0010\nJ\u0010\u0010\u0018\u001a\u00020\u00192\u0006\u0010\u001a\u001a\u00020\u0013H\u0016J\u001c\u0010\u001b\u001a\u00020\u001c2\n\u0010\u001d\u001a\u00060\u0003R\u00020\u00002\u0006\u0010\u001e\u001a\u00020\u0013H\u0016J\u001c\u0010\u001f\u001a\u00060\u0003R\u00020\u00002\u0006\u0010 \u001a\u00020!2\u0006\u0010\"\u001a\u00020\u0013H\u0016R\u001a\u0010\u000b\u001a\u00020\fX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\r\u0010\u000e\"\u0004\b\u000f\u0010\u0010R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\b\u001a\u00020\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R&\u0010\u0011\u001a\u000e\u0012\u0004\u0012\u00020\u0002\u0012\u0004\u0012\u00020\u00130\u0012X\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0014\u0010\u0015\"\u0004\b\u0016\u0010\u0017\u00a8\u0006$"}, d2 = {"Lcom/example/takeorder/adapter/ChildMenuOrderRecyclerViewAdapter;", "Lio/realm/RealmRecyclerViewAdapter;", "Lcom/example/takeorder/realm/RealmMenuItems;", "Lcom/example/takeorder/adapter/ChildMenuOrderRecyclerViewAdapter$ChildMenuOrderViewHolder;", "context", "Landroid/content/Context;", "data", "Lio/realm/OrderedRealmCollection;", "menuOrderRecyclerViewCallback", "Lcom/example/takeorder/adapter/MenuOrderRecyclerViewAdapter$MenuOrderRecyclerViewCallback;", "(Landroid/content/Context;Lio/realm/OrderedRealmCollection;Lcom/example/takeorder/adapter/MenuOrderRecyclerViewAdapter$MenuOrderRecyclerViewCallback;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "orderMap", "", "", "getOrderMap", "()Ljava/util/Map;", "setOrderMap", "(Ljava/util/Map;)V", "getItemId", "", "index", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "ChildMenuOrderViewHolder", "app_debug"})
 public final class ChildMenuOrderRecyclerViewAdapter extends io.realm.RealmRecyclerViewAdapter<com.example.takeorder.realm.RealmMenuItems, com.example.takeorder.adapter.ChildMenuOrderRecyclerViewAdapter.ChildMenuOrderViewHolder> {
     private final android.content.Context context = null;
+    private final com.example.takeorder.adapter.MenuOrderRecyclerViewAdapter.MenuOrderRecyclerViewCallback menuOrderRecyclerViewCallback = null;
     @org.jetbrains.annotations.NotNull()
     private java.lang.String TAG = "REALM_RECYCLER_ADAPTER";
+    @org.jetbrains.annotations.NotNull()
+    private java.util.Map<com.example.takeorder.realm.RealmMenuItems, java.lang.Integer> orderMap;
     
     public ChildMenuOrderRecyclerViewAdapter(@org.jetbrains.annotations.NotNull()
     android.content.Context context, @org.jetbrains.annotations.Nullable()
-    io.realm.OrderedRealmCollection<com.example.takeorder.realm.RealmMenuItems> data) {
+    io.realm.OrderedRealmCollection<com.example.takeorder.realm.RealmMenuItems> data, @org.jetbrains.annotations.NotNull()
+    com.example.takeorder.adapter.MenuOrderRecyclerViewAdapter.MenuOrderRecyclerViewCallback menuOrderRecyclerViewCallback) {
         super(null, false);
     }
     
@@ -21,6 +25,15 @@ public final class ChildMenuOrderRecyclerViewAdapter extends io.realm.RealmRecyc
     
     public final void setTAG(@org.jetbrains.annotations.NotNull()
     java.lang.String p0) {
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final java.util.Map<com.example.takeorder.realm.RealmMenuItems, java.lang.Integer> getOrderMap() {
+        return null;
+    }
+    
+    public final void setOrderMap(@org.jetbrains.annotations.NotNull()
+    java.util.Map<com.example.takeorder.realm.RealmMenuItems, java.lang.Integer> p0) {
     }
     
     @org.jetbrains.annotations.NotNull()

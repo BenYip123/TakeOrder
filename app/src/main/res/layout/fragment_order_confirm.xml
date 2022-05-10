@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderConfirmFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Confirmed!"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:padding="50sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What would you like to do next?"
+            android:layout_margin="15sp"/>
+
+        <Button
+            android:id="@+id/to_home_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:layout_marginHorizontal="50sp"
+            android:layout_marginVertical="15sp"/>
+
+        <Button
+            android:id="@+id/to_order_history_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Order History"
+            android:layout_marginHorizontal="50sp"
+            android:layout_marginVertical="15sp"/>
+
+        <Button
+            android:id="@+id/to_new_order_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start New Order"
+            android:layout_marginHorizontal="50sp"
+            android:layout_marginVertical="15sp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

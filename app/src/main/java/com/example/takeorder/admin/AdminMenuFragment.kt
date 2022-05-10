@@ -57,7 +57,7 @@ class AdminMenuFragment: Fragment(R.layout.fragment_admin_menu){
                     .or()
                     .contains("name", query, Case.INSENSITIVE)
                     .or()
-                    .contains("category", query, Case.INSENSITIVE)
+                    .contains("category.category", query, Case.INSENSITIVE)
                     .findAll())
                 return false
             }
@@ -69,7 +69,7 @@ class AdminMenuFragment: Fragment(R.layout.fragment_admin_menu){
                     .or()
                     .contains("name", newText, Case.INSENSITIVE)
                     .or()
-                    .contains("category", newText, Case.INSENSITIVE)
+                    .contains("category.category", newText, Case.INSENSITIVE)
                     .findAll())
                 return false
             }

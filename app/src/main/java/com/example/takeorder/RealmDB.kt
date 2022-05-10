@@ -31,8 +31,7 @@ class RealmDB: Application() {
         menuItems.insert("Fish and Chips", 500, "Fresh battered cod with chips", "food")
         val order = RealmOrders()
         val currentDate = Date.from(Instant.now())
-        println(currentDate)
-        order.insert(1296, currentDate)
+        order.insert(1296, currentDate, 0)
     }
     private fun initRealm() {
         Realm.init(this)

@@ -44,6 +44,10 @@
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_history.png"
     },
     {
+        "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_order_summary.xml.flat",
+        "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\fragment_order_summary.xml"
+    },
+    {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_analytics_foreground.xml.flat",
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\drawable\\ic_analytics_foreground.xml"
     },
@@ -248,8 +252,16 @@
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\mipmap-hdpi\\ic_order.png"
     },
     {
+        "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_order_details.xml.flat",
+        "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\fragment_order_details.xml"
+    },
+    {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_history_round.xml.flat",
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_history_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_order_confirm.xml.flat",
+        "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\fragment_order_confirm.xml"
     },
     {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_history.png.flat",
@@ -298,6 +310,10 @@
     {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_analytics.png.flat",
         "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\mipmap-mdpi\\ic_analytics.png"
+    },
+    {
+        "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\layout_order_summary_row.xml.flat",
+        "source": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\src\\main\\res\\layout\\order_summary_row.xml"
     },
     {
         "merged": "C:\\Users\\beny5\\Documents\\IN3007 Individual Project\\AndroidStudioProject\\TakeOrder\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_home.png.flat",

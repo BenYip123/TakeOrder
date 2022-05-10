@@ -17,10 +17,14 @@
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_analytics.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_home.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_order.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_order_confirm.xml" value="0.176" />
+        <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_order_details.xml" value="0.16875" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_order_history.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/fragment_order_summary.xml" value="0.2" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/order_history_recyclerview_row.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/order_history_view_layout.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/order_recyclerview_row.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/order_summary_row.xml" value="0.13854166666666667" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/layout/recyclerview_row.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/menu/appbar_menu.xml" value="0.115625" />
         <entry key="..\:/Users/beny5/Documents/IN3007 Individual Project/AndroidStudioProject/TakeOrder/app/src/main/res/menu/bottom_nav_menu.xml" value="0.14114583333333333" />

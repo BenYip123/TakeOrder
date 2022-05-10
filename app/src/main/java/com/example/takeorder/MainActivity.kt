@@ -80,24 +80,36 @@ class MainActivity : AppCompatActivity() {
         val currentFragment = NavHostFragment.findNavController(navHostFragment).currentDestination?.id
         // check if current fragment is home fragment
         if(currentFragment != R.id.homeFragment){
-            // if false, use default back button functionality
-            super.onBackPressed()
+            if(currentFragment == R.id.orderSummaryFragment){
+                // warn the user that their order will be reset if they continue to go back in the order summary
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage("The current order will be reset if you go to the previous screen"+"\n"+"Are you sure you want to do this?")
+                    .setPositiveButton("Yes") { _: DialogInterface, _: Int ->
+                        super.onBackPressed()
+                    }
+                    .setNegativeButton("No") { dialog: DialogInterface, _: Int ->
+                        dialog.cancel()
+                    }
+                val alert = builder.create()
+                alert.show()
+            } else {
+                // if false, use default back button functionality
+                super.onBackPressed()
+            }
         } else {
             // ask if the user would like to close the app on back button press, only on the home fragment
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Are you sure you want to exit the app?")
                 .setPositiveButton(
-                    "Yes",
-                    DialogInterface.OnClickListener(function = { _: DialogInterface, _: Int ->
-                        finish()
-                    })
-                )
+                    "Yes"
+                ) { _: DialogInterface, _: Int ->
+                    finish()
+                }
                 .setNegativeButton(
-                    "No",
-                    DialogInterface.OnClickListener(function = { dialog: DialogInterface, _: Int ->
-                        dialog.cancel()
-                    })
-                )
+                    "No"
+                ) { dialog: DialogInterface, _: Int ->
+                    dialog.cancel()
+                }
             val alert = builder.create()
             alert.show()
         }

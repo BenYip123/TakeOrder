@@ -3,6 +3,7 @@ package com.example.takeorder
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -37,7 +38,14 @@ class OrderFragment:Fragment(R.layout.fragment_order){
 
         val orderButton = view.findViewById<Button>(R.id.order)
         orderButton.setOnClickListener{
-            findNavController().navigate(R.id.action_adminFragment_to_adminMenuFragment, adapter.getMap())
+            if(adapter.toHashMap().isEmpty()){
+                Toast.makeText(context, "Must add at least 1 item to place an order!", Toast.LENGTH_SHORT).show()
+            } else {
+                findNavController().navigate(
+                    R.id.action_orderFragment_to_orderSummaryFragment,
+                    adapter.getBundle()
+                )
+            }
         }
     }
 }

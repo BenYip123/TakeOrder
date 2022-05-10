@@ -15,7 +15,7 @@ class HomeFragment:Fragment(R.layout.fragment_home){
         val username = sharedPref?.getString("username", null)
         val welcomeText = view.findViewById<TextView>(R.id.welcomeMessage)
         welcomeText.text = buildString {
-            append("Welcome ")
+            append("Welcome, ")
             append(username)
         }
     }

@@ -2647,6 +2647,12 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_orderConfirmFragment_to_homeFragment
+id action_orderConfirmFragment_to_orderFragment
+id action_orderConfirmFragment_to_orderHistoryFragment
+id action_orderFragment_to_orderSummaryFragment
+id action_orderHistoryFragment_to_orderDetailsFragment
+id action_orderSummaryFragment_to_orderConfirmFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2719,6 +2725,7 @@ id closest
 id collapseActionView
 id compress
 id confirm_button
+id confirm_order
 id constraint
 id container
 id content
@@ -2935,8 +2942,12 @@ id off
 id oldestBtn
 id on
 id onInterceptTouchReturnSwipe
+id order
+id orderConfirmFragment
+id orderDetailsFragment
 id orderFragment
 id orderHistoryFragment
+id orderSummaryFragment
 id outline
 id outward
 id overshoot
@@ -3039,6 +3050,12 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id summaryRecyclerView
+id summary_name
+id summary_price
+id summary_quantity
+id summary_staff_id
+id summary_total_price
 id supportScrollUp
 id tabMode
 id tag_accessibility_actions
@@ -3083,6 +3100,9 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id to_home_button
+id to_new_order_button
+id to_order_history_button
 id toggle
 id top
 id topPanel
@@ -3232,7 +3252,10 @@ layout fragment_admin_menu
 layout fragment_admin_staff
 layout fragment_home
 layout fragment_order
+layout fragment_order_confirm
+layout fragment_order_details
 layout fragment_order_history
+layout fragment_order_summary
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3295,6 +3318,7 @@ layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout order_recyclerview_row
+layout order_summary_row
 layout recyclerview_row
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
