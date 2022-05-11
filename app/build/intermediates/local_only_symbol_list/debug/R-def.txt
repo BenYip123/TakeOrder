@@ -52,10 +52,15 @@ id confirm_order
 id decrease_button
 id deleteButton
 id description
+id detailsRecyclerView
+id details_staff_id
+id details_total_price
 id editButton
 id expensiveBtn
 id homeFragment
 id homeText
+id home_to_orderHistory_button
+id home_to_order_button
 id increase_button
 id itemRecyclerView
 id item_description

@@ -12,13 +12,16 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
+            app:destination="@id/orderFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_orderHistoryFragment"
-            app:destination="@id/orderHistoryFragment" />
+            app:destination="@id/orderHistoryFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_adminFragment"
-            app:destination="@id/adminFragment" />
+            app:destination="@id/adminFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"

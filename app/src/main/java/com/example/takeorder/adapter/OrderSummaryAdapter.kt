@@ -14,7 +14,7 @@ import com.example.takeorder.realm.RealmMenuItems
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
-class OrderSummaryAdapter(private val data: HashMap<RealmMenuItems, Int>) :
+class OrderSummaryAdapter(private val data: HashMap<RealmMenuItems?, Int>) :
     RecyclerView.Adapter<OrderSummaryAdapter.ViewHolder>() {
     var TAG = "REALM_RECYCLER_ADAPTER"
     var totalPrice: Long = 0

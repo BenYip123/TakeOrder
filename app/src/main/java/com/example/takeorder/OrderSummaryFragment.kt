@@ -6,8 +6,8 @@ import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.text.bold
-import androidx.core.text.scale
 import androidx.core.view.doOnNextLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -31,9 +31,9 @@ class OrderSummaryFragment: Fragment(R.layout.fragment_order_summary){
         val staffId = sharedPref.getLong("id", 0)
 
         // get data sent from OrderFragment bundle
-        val orderData: HashMap<RealmMenuItems, Int>
+        val orderData: HashMap<RealmMenuItems?, Int>
         val bundle: Bundle? = arguments
-        orderData = (bundle!!.getSerializable("orderBundle") as? HashMap<RealmMenuItems, Int>)!!
+        orderData = (bundle!!.getSerializable("orderBundle") as? HashMap<RealmMenuItems?, Int>)!!
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.summaryRecyclerView)
         val adapter = OrderSummaryAdapter(orderData)
@@ -65,11 +65,13 @@ class OrderSummaryFragment: Fragment(R.layout.fragment_order_summary){
             // create an order object in realm order class and link to realm staff class
             val order = realmOrder.insert(adapter.getTotal(), currentDate, staffId)
 
-            // add order details (items and quantity)
+            // add order details (items and quantity) to database
             val itemQuantityMap = adapter.getItemMap()
             val realmItemsOrders = RealmMenuItemsOrders()
             realmItemsOrders.insertMultiple(itemQuantityMap, order)
             findNavController().navigate(OrderSummaryFragmentDirections.actionOrderSummaryFragmentToOrderConfirmFragment())
+
+            Toast.makeText(context, "Order successfully added to database", Toast.LENGTH_SHORT).show()
         }
     }
 
