@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
+ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
 MERGED from [io.realm:realm-android-library-object-server:10.6.0] C:\Users\beny5\.gradle\caches\transforms-3\3e146d3e4658ee82ac58074d3da84022\transformed\realm-android-library-object-server-10.6.0\AndroidManifest.xml:2:1-13:12
 MERGED from [io.realm:realm-android-kotlin-extensions-object-server:10.6.0] C:\Users\beny5\.gradle\caches\transforms-3\1eb8edfc6f6b8ae4a6d6985dba27e7d9\transformed\realm-android-kotlin-extensions-object-server-10.6.0\AndroidManifest.xml:2:1-10:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\d9c4a50e0ee4b4cb2c49168e0159e7da\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -71,25 +71,25 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\901acf1926099c4b40d13e6361380702\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\ce7234b5844cf757c347cc4914a22c15\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\beny5\.gradle\caches\transforms-3\3309b5813d8057b939dd458a6b0768ac\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:5:5-31:19
+ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:5:5-26:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\beny5\.gradle\caches\transforms-3\0291d6d6a9c6aa566d464ec54af56759\transformed\window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.material:material:1.5.0] C:\Users\beny5\.gradle\caches\transforms-3\9030e3a76131e643489be929b38eb016\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
@@ -141,7 +141,7 @@ ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProje
 	android:name
 		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:19:27-74
 activity#com.example.takeorder.MainActivity
-ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:22:9-30:20
+ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:22:9-25:20
 	android:exported
 		ADDED from C:\Users\beny5\Documents\IN3007 Individual Project\AndroidStudioProject\TakeOrder\app\src\main\AndroidManifest.xml:24:13-36
 	android:name
