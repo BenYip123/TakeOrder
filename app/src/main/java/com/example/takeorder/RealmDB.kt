@@ -21,17 +21,14 @@ class RealmDB: Application() {
         //initialise Realm database
         initRealm()
 
-        val menuCategory = RealmMenuCategory()
-        menuCategory.insert("food")
-        menuCategory.insert("drink")
-        menuCategory.insert("miscellaneous")
+        /*
         val staff = RealmStaff()
-        staff.insert("bob", "password", "regular")
+        staff.insert("admin2", "myPassw0rD", "admin")
         val menuItems = RealmMenuItems()
         menuItems.insert("Fish and Chips", 500, "Fresh battered cod with chips", "food")
-        val order = RealmOrders()
-        val currentDate = Date.from(Instant.now())
-        order.insert(1296, currentDate, 0)
+        menuItems.insert("Bottled Water", 120, "Bottled spring water", "drink")
+        menuItems.insert("Ketchup", 10, "Tomato ketchup made from the finest tomatoes", "miscellaneous")
+        */
     }
     private fun initRealm() {
         Realm.init(this)
@@ -44,7 +41,7 @@ class RealmDB: Application() {
         Realm.setDefaultConfiguration(config)
 
         // Delete existing Realm database on app startup, only for testing
-        Realm.deleteRealm(config)
+        //Realm.deleteRealm(config)
 
         val realm = Realm.getInstance(config)
 
@@ -61,6 +58,10 @@ class RealmDB: Application() {
                 staff.password = "admin"
                 staff.role = "admin"
             }
+            val menuCategory = RealmMenuCategory()
+            menuCategory.insert("food")
+            menuCategory.insert("drink")
+            menuCategory.insert("miscellaneous")
         }
     }
 }
